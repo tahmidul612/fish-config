@@ -36,7 +36,7 @@ fish_add_path -m ~/.local/bin
 Install FiraCode
 
 ```console
-git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
+git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts
 cd nerd-fonts
 git sparse-checkout add patched-fonts/FiraCode
 ./install.sh FiraCode
