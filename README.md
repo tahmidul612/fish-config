@@ -121,3 +121,80 @@ fisher install jorgebucaran/getopts.fish
 ```console
 fisher install IlanCosman/tide@v5
 ```
+
+## Extra Modifications
+
+### Multiplexer (Byobu)
+
+> <https://alexsavio.github.io/how-to-byobu.html>
+
+- Install and set byobu to start at login
+
+    ```console
+    sudo apt install byobu
+    ```
+
+    ```console
+    byobu-enable
+    ```
+
+- Enable mouse in byobu
+  - Create/open `~/.byobu/profile.tmux` and add the following lines
+
+    ```console
+    source $BYOBU_PREFIX/share/byobu/profiles/tmux
+
+    ## Make mouse useful, tmux > 2.1 include select, resize pane/window and console wheel scroll
+    set -g mouse on
+
+    ## Lower escape timing from 500ms to 50ms for quicker response to scroll-buffer access
+    set -s escape-time 50
+    ```
+
+    > [rodricels/.tmux.conf](<https://gist.github.com/rodricels/7951c3bd505d343b07309b76188af9b3>)
+
+### Custom Fish Keybindings
+
+- Delete next word with `Ctrl + Delete` and previous word with `Ctrl + Backspace`
+  - Open `~/.config/fish/functions/fish_user_key_bindings.fish` and add the following lines within the function
+
+    ```fish
+    bind \x7f backward-delete-char  # Normal Backspace deletes characters
+    bind \b backward-kill-word      # Ctrl+Backspace deletes words
+
+    bind \e\[3\;5~ kill-word  # Bind Ctrl+Delete to delete the next word
+    ```
+
+  > [!NOTE]
+  > `Termius` on iOS registers both `backspace` and `ctrl + backspace` with the same keycode `^H`. So, you may want to skip the backspace keybindings.
+  >
+  > You can check what your terminal gets on a keypress by entering `cat` and pressing the key you want to check.
+
+### Keychain (ssh-agent)
+
+> <https://superuser.com/a/1727657>
+
+- Install `keychain` and add the following lines to `~/.config/fish/conf.d/keychain.fish`
+
+    ```console
+    sudo apt install keychain
+    ```
+
+    ```fish
+    if status is-login
+        and status is-interactive
+        # To add a key, set -Ua SSH_KEYS_TO_AUTOLOAD keypath
+        # To remove a key, set -U --erase SSH_KEYS_TO_AUTOLOAD[index_of_key]
+        keychain --eval $SSH_KEYS_TO_AUTOLOAD | source
+
+    end
+    ```
+
+    > [!TIP]
+    > `SSH_KEYS_TO_AUTOLOAD` is an array of key paths to be loaded by `keychain`. You can add or remove keys from the array as needed.
+    >
+    > Add multiple keys to `SSH_KEYS_TO_AUTOLOAD` array
+    >
+    >```console
+    >set -Ua SSH_KEYS_TO_AUTOLOAD ~/.ssh/{key1,key1.pub,key2,key2.pub}
+    >```
