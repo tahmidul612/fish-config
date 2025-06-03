@@ -119,7 +119,7 @@ fisher install jorgebucaran/getopts.fish
 ### [Tide](https://github.com/IlanCosman/tide) - A modern prompt manager for Fish
 
 ```console
-fisher install IlanCosman/tide@v5
+fisher install IlanCosman/tide@v6
 ```
 
 ## Extra Modifications
