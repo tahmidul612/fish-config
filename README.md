@@ -22,7 +22,7 @@ A curation of plugins, prompts, and other treasures for the [friendly interactiv
 ## Install [Fish](https://fishshell.com) (Ubuntu)
 
 ```console
-sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt-add-repository ppa:fish-shell/release-4
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install fish
 chsh -s $(which fish)
