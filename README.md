@@ -81,17 +81,49 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 - [fd](https://github.com/sharkdp/fd)
 
-```console
-sudo apt install fd-find
-ln -s $(which fdfind) ~/.local/bin/fd
-```
+  <!-- TAB_START:Ubuntu -->
+
+  #### Ubuntu
+
+  ```console
+  sudo apt install fd-find
+  ln -s $(which fdfind) ~/.local/bin/fd
+  ```
+
+  <!-- TAB_END -->
+
+  <!-- TAB_START:Arch -->
+
+  #### Arch
+
+  ```console
+  paru -S cachyos-extra-v3/fd
+  ```
+
+  <!-- TAB_END -->
 
 - [bat](https://github.com/sharkdp/bat)
 
-```console
-sudo apt install bat
-ln -s /usr/bin/batcat ~/.local/bin/bat
-```
+  <!-- TAB_START:Ubuntu -->
+
+  #### Ubuntu
+
+  ```console
+  sudo apt install bat
+  ln -s /usr/bin/batcat ~/.local/bin/bat
+  ```
+
+  <!-- TAB_END -->
+
+  <!-- TAB_START:Arch -->
+
+  #### Arch
+
+  ```console
+  paru -S cachyos-extra-v3/bat
+  ```
+
+  <!-- TAB_END -->
 
 Finally install fzf with Fisher
 
@@ -132,7 +164,26 @@ fisher install jorgebucaran/getopts.fish
 3. [Add VirtualFish to your prompt](https://virtualfish.readthedocs.org/en/latest/install.html#customizing-your-fish-prompt)
 4. `vf new myvirtualenv; which python` -->
 
-### [PyEnv]
+### [PyEnv](https://github.com/pyenv/pyenv)
+
+Install pyenv:
+
+```console
+curl -fsSL https://pyenv.run | bash
+```
+
+Configure fish shell to use pyenv:
+
+```console
+set -Ux PYENV_ROOT $HOME/.pyenv
+test -d $PYENV_ROOT/bin; and fish_add_path $PYENV_ROOT/bin
+```
+
+Install a pyenv fisher plugin to setup completions and shell integration:
+
+```console
+fisher install amir20/fish-pyenv 
+```
 
 ## Prompts
 
@@ -148,15 +199,30 @@ fisher install IlanCosman/tide@v6
 
 > <https://alexsavio.github.io/how-to-byobu.html>
 
-- Install and set byobu to start at login
+- Install byobu
 
-    ```console
-    sudo apt install byobu
-    ```
+  <!-- TAB_START:Ubuntu -->
 
-    ```console
-    byobu-enable
-    ```
+  #### Ubuntu
+
+  ```console
+  sudo apt install byobu
+  ```
+  <!-- TAB_END -->
+
+  #### Arch
+
+  <!-- TAB_START:Arch -->
+  ```console
+  sudo pacman -S byobu
+  ```
+  <!-- TAB_END -->
+
+- Start byobu on login
+
+  ```console
+  byobu-enable
+  ```
 
 - Enable mouse in byobu
   - Create/open `~/.byobu/profile.tmux` and add the following lines
@@ -186,19 +252,39 @@ fisher install IlanCosman/tide@v6
     ```
 
   > [!NOTE]
-  > `Termius` on iOS registers both `backspace` and `ctrl + backspace` with the same keycode `^H`. So, you may want to skip the backspace keybindings.
+  > `Termius` on iOS registers both `backspace` and `ctrl + backspace` with the same keycode `^H`.
+  > So, you may want to skip the backspace keybindings.
   >
-  > You can check what your terminal gets on a keypress by entering `cat` and pressing the key you want to check.
+  > You can check what your terminal gets on a keypress by entering `cat`
+  > and pressing the key you want to check.
 
 ### Keychain (ssh-agent)
 
 > <https://superuser.com/a/1727657>
 
-- Install `keychain` and add the following lines to `~/.config/fish/conf.d/keychain.fish`
+- Install `keychain`:
 
-    ```console
-    sudo apt install keychain
-    ```
+  <!-- TAB_START:Ubuntu -->
+
+  #### Ubuntu
+
+  ```console
+  sudo apt install keychain
+  ```
+
+  <!-- TAB_END -->
+
+  <!-- TAB_START:Arch -->
+
+  #### Arch
+
+  ```console
+  sudo pacman -S keychain
+  ```
+
+<!-- TAB_END -->
+
+- Add these lines to `~/.config/fish/conf.d/keychain.fish`:
 
     ```fish
     if status is-login
@@ -211,7 +297,8 @@ fisher install IlanCosman/tide@v6
     ```
 
     > [!TIP]
-    > `SSH_KEYS_TO_AUTOLOAD` is an array of key paths to be loaded by `keychain`. You can add or remove keys from the array as needed.
+    > `SSH_KEYS_TO_AUTOLOAD` is an array of key paths to be loaded by `keychain`.
+    > You can add or remove keys from the array as needed.
     >
     > Add multiple keys to `SSH_KEYS_TO_AUTOLOAD` array
     >
