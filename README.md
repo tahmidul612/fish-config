@@ -210,9 +210,10 @@ fisher install IlanCosman/tide@v6
   ```
   <!-- TAB_END -->
 
+  <!-- TAB_START:Arch -->
+
   #### Arch
 
-  <!-- TAB_START:Arch -->
   ```console
   sudo pacman -S byobu
   ```
