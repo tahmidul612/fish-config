@@ -19,7 +19,11 @@ A curation of plugins, prompts, and other treasures for the [friendly interactiv
 
 ---
 
-## Install [Fish](https://fishshell.com) (Ubuntu)
+## Install [Fish](https://fishshell.com)
+
+<!-- TAB_START:Ubuntu -->
+
+### Ubuntu
 
 ```console
 sudo apt-add-repository ppa:fish-shell/release-4
@@ -28,6 +32,20 @@ sudo apt-get install fish
 chsh -s $(which fish)
 fish_add_path -m ~/.local/bin
 ```
+
+<!-- TAB_END -->
+
+<!-- TAB_START:Arch -->
+
+### Arch
+
+```console
+sudo pacman -S fish
+chsh -s $(which fish)
+fish_add_path -m ~/.local/bin
+```
+
+<!-- TAB_END -->
 
 ## Fonts
 
@@ -107,12 +125,14 @@ fisher install jorgebucaran/autopair.fish
 fisher install jorgebucaran/getopts.fish
 ```
 
-### [Virtualfish](https://github.com/adambrenecki/virtualfish) - Virtualenv wrapper
+<!-- ### [Virtualfish](https://github.com/adambrenecki/virtualfish) - Virtualenv wrapper
 
 1. `python -m pip install virtualfish`
 2. `vf install`
 3. [Add VirtualFish to your prompt](https://virtualfish.readthedocs.org/en/latest/install.html#customizing-your-fish-prompt)
-4. `vf new myvirtualenv; which python`
+4. `vf new myvirtualenv; which python` -->
+
+### [PyEnv]
 
 ## Prompts
 
